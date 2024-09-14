@@ -1,0 +1,9 @@
+<svg width="1311" height="150%" xmlns="http://www.w3.org/2000/svg">
+ <g>
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+  <title>Layer 1</title>
+  <ellipse stroke="#000" transform="rotate(16.03182029724121 313.51300048828097,306.08883666992193) " ry="421.03165" rx="303.2805" id="svg_1" cy="306.08883" cx="313.51301" stroke-width="1.5" fill="#fff"/>
+  <rect stroke="#000" id="svg_2" height="650" width="939.00005" y="-3.90432" x="372.79915" stroke-width="1.5" fill="#fff"/>
+  <ellipse stroke="#000" transform="rotate(32.93008804321289 329.24908447265636,352.48010253906244) " ry="400.31132" rx="303.2805" id="svg_3" cy="352.4801" cx="329.24912" stroke-width="1.5" fill="#fff"/>
+</svg>
