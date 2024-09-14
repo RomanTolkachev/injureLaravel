@@ -1,3 +1,123 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    * {
+        @apply scrollbar-thin
+    }
+    .stop-scrolling {
+        overflow: hidden !important;
+        height: 100dvh !important;
+    }
+
+    .add-scroll-bar {
+        overflow-y: scroll;
+    }
+
+    .white-bottom-mask {
+        mask: linear-gradient(#ffffff 67%, transparent 100%) 0 0/100% 106%;
+    }
+
+    .top-mask-dark {
+        background: linear-gradient(0deg, rgba(0,0,0,0) 95%, rgba(66,66,66,0.28) 100%);
+    }
+
+    .bot-top-mask-dark {
+        background: linear-gradient(0deg, rgba(0,0,0,0) 95%, rgba(66,66,66,0.28) 100%), linear-gradient(rgba(0,0,0,0) 95%, rgba(66,66,66,0.28) 100%);;
+    }
+
+    .bottom-mask-dark {
+        background: linear-gradient(rgba(0,0,0,0) 95%, rgba(66,66,66,0.28) 100%);
+    }
+
+
+    .my-gradient {
+        background: linear-gradient(95deg, transparent 0%, rgb(0,196,255) 130%),
+        linear-gradient(transparent 0%, #0388ed 100%),
+        linear-gradient(0deg, transparent 0%, #054dd7 0%);
+    }
+    .hero-mask {
+        background: linear-gradient(90deg, transparent 0%, #0c2c3d 100%) 0 0/200% 100%;
+    }
+    .my-footer-gradient {
+        background: radial-gradient(at 65% 75%, #054dd7 0%, transparent 88%),
+        linear-gradient(270deg, #00c1ff 0%, #326ee2 100%);
+        background-blend-mode: color;
+    }
+    .my-button-hover {
+        -webkit-box-shadow: 0 0 41px 4px rgba(145, 199, 244, 0.51) inset;
+        -moz-box-shadow: 0 0 41px 4px rgba(145, 199, 244, 0.51) inset;
+        box-shadow: 0 0 41px 4px rgba(145, 199, 244, 0.51) inset;
+        @apply duration-200
+    }
+    .my-button-hover:active {
+        -webkit-box-shadow: 0 0 41px 4px rgba(255, 255, 255, 0.51) inset;
+        -moz-box-shadow: 0 0 41px 4px rgba(255, 255, 255, 0.51) inset;
+        box-shadow: 0 0 41px 4px rgba(255, 255, 255, 0.51) inset;
+        @apply duration-0
+    }
+
+    /*.grid-container {*/
+    /*    display: grid;*/
+    /*    grid-template-columns: 1fr 1fr 1fr 1fr;*/
+    /*    grid-gap: 15px;*/
+    /*}*/
+
+    .grid-container::before {
+        content: '';
+        width: 0;
+        padding-bottom: 100%;
+        grid-row: 1 / 1;
+        grid-column: 1 / 1;
+    }
+
+    .grid-container > *:first-child{
+        grid-row: 1 / 1;
+        grid-column: 1 / 1;
+    }
+
+    .small-grid-container::before {
+        content: '';
+        width: 0;
+        padding-bottom: 22%;
+        grid-row: 1 / 1;
+        grid-column: 1 / 1;
+    }
+
+    .small-grid-container > *:first-child {
+        grid-row: 1 / 1;
+        grid-column: 1 / 1;
+    }
+
+    .nav {
+        @apply relative
+    }
+    .active > .nav:before {
+        @apply scale-x-100 !important
+    }
+    .nav:hover:before{
+        @apply scale-x-[.3]
+    }
+    .nav:before {
+        @apply absolute scale-x-0 w-full h-px  left-0 -bottom-1 bg-white content-[''] origin-top-left transition duration-300
+    }
+    .video-button {
+        @apply rounded-3xl border-white bg-my-white
+    }
+    .video-button-wide {
+        @apply rounded-full border-2 bg-my-blue-light text-white hover:my-button-hover
+    }
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    src: url("/public/fonts/Inter-VariableFont_slnt,wght.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "Georgia";
+    font-style: normal;
+    src: url("/public/fonts/georgia.ttf") format('truetype');
+}
