@@ -1,4 +1,7 @@
 import { store } from "../../index";
+import {GET_SERVICES_FAILED, GET_SERVICES_SUCCESS} from "../actions/servicesActions";
+import {Action, ThunkAction} from "@reduxjs/toolkit";
+import {IRootState} from "../reducers/root-reducer";
 
 export interface IMenuItem {
   path: string;
@@ -36,4 +39,16 @@ export interface IServiceItem {
   size?: string;
 }
 
+export interface IServicesFetchSuccess {
+    type: typeof GET_SERVICES_SUCCESS
+    payload: IServiceItem[]
+}
+
+export interface IServicesFetchFailed {
+    type: typeof GET_SERVICES_FAILED
+}
+
+export type TServicesFetch = IServicesFetchSuccess | IServicesFetchFailed
+
+export type AppThunk = ThunkAction<ReturnType<any>, IRootState, unknown, Action>;
 export type TAppDispatch = typeof store.dispatch;

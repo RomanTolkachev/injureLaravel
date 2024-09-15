@@ -3,11 +3,13 @@ import { store } from "../../index";
 import { mapState } from "./mapReducer";
 import { headerState } from "./headerReducer";
 import { animationState } from "./animationReducer";
+import {servicesState} from "./servicesReducer";
 
 export type IRootState = ReturnType<typeof store.getState>;
 
 export const rootReducer = combineReducers({
-  mapState: mapState,
-  headerState: headerState,
-  animationState: animationState,
+    mapState: mapState,
+    headerState: headerState,
+    animationState: animationState,
+    servicesState: servicesState
 });
