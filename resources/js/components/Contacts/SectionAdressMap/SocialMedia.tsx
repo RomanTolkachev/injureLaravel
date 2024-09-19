@@ -21,7 +21,7 @@ export const SocialMedia: FunctionComponent = () => {
     <div className="flex w-full gap-2">
       <>
         <motion.span
-          className="inline-block h-[32px]"
+          className="inline-block h-[32px] aspect-square"
           whileHover="hover"
           whileTap="tap"
           variants={iconVariants}
@@ -29,7 +29,7 @@ export const SocialMedia: FunctionComponent = () => {
           <Sprite whatsUp={true} />
         </motion.span>
         <motion.span
-          className="inline-block h-[32px]"
+          className="inline-block h-[32px] aspect-square"
           whileHover="hover"
           whileTap="tap"
           variants={iconVariants}

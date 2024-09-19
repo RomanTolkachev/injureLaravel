@@ -55,7 +55,7 @@ export const Legal: FunctionComponent<ILegal> = ({
           </motion.span>
         </motion.button>
         <motion.ul // мобилка
-          className={"space-y-1 overflow-hidden"}
+          className={"space-y-1 overflow-hidden h-0"}
           animate={isOpen ? motionShow : motionHide}
         >
           <li>

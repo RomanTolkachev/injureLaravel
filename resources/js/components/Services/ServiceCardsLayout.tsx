@@ -36,7 +36,6 @@ export const ServiceCardsLayout: FunctionComponent<IProps> = ({
   };
   const location = useLocation();
   const filtered: IServiceItem[] | null = useMemo(() => {
-      console.log(servicesData)
       if (servicesData) {
           return servicesData.filter((item: IServiceItem) => item.type === currentType);
       } else {

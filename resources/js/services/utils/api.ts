@@ -1,6 +1,7 @@
 import {IServiceItem} from "./types";
 
-export const BASE_URL: "http://127.0.0.1:8000/api" = "http://127.0.0.1:8000/api";
+// export const BASE_URL: "http://127.0.0.1:8000/api" = "http://127.0.0.1:8000/api";
+export const BASE_URL: "https://in-jure.com/api" = "https://in-jure.com/api";
 
 export const fetchServices = ():Promise<IServiceItem[]> => {
     return fetch(`${BASE_URL}/services`)

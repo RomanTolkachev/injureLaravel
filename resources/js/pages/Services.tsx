@@ -16,7 +16,6 @@ export const Services: FunctionComponent = () => {
     "physical",
   );
     useEffect(() => {
-        console.log("сработал эффект")
         !servicesData ? dispatch(getServices()) : null
     }, [servicesData]);
   return (

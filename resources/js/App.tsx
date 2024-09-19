@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, {useCallback, useEffect, useMemo} from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Main } from "./pages/Main";
 import { About } from "./pages/About";
@@ -17,12 +17,11 @@ import { useSelectorTyped } from "./services/hooks/typedUseSelector";
 
 function App(): React.JSX.Element {
     const { isMapLoaded } = useSelectorTyped((state) => state.mapState);
-
     const location = useLocation();
     const navigate = useNavigate();
+
     const background: string = location.state && location.state.background;
     const isDynamicRoute = location.pathname.startsWith("/services/");
-
     const memoizedLocation = useMemo(() => {
         if (isDynamicRoute && background) {
             return { ...location, pathname: "/services" };
