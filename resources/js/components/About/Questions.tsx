@@ -1,9 +1,9 @@
 import {FunctionComponent} from "react";
 import {motion} from "framer-motion";
 
-export const Questions: FunctionComponent = () => {
+export const Questions: FunctionComponent<{className: string}> = ({className}) => {
     return (
-        <div className={"p-3 bg-[#0884FF] h-full shadow-md rounded-2xl"}>
+        <div className={`${className} p-3 bg-[#0884FF] h-full shadow-md rounded-2xl`}>
             <div className={"p-6 h-full bg-white rounded-xl flex flex-col"}>
                 <h4 className={
                     "mb-3 pt-5 text-center text-xl font-bold first-letter:capitalize " +
