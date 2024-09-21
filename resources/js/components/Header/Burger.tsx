@@ -84,7 +84,7 @@ export const Burger: FunctionComponent<IBurgerProps> = ({
           initial="closed"
           animate="open"
           exit="onClose"
-          className={`${className} max-h-svh overflow-y-scroll`}
+          className={`${className} max-h-[calc(100dvh-90px)] overflow-y-scroll`}
         >
           <motion.ul
             variants={listVariants}
