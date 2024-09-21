@@ -18,7 +18,7 @@ export const Address: FunctionComponent<IAddress> = ({
   address,
   firstContact,
   secondContact,
-  socialMediaComponent = <SocialMedia />,
+  socialMediaComponent = <SocialMedia className={"!max-sm:gap-5 justify-start items-center max-sm:h-[50px]"}/>,
 }) => {
   return (
     <div className={`${className} flex flex-col first-letter:capitalize`}>
