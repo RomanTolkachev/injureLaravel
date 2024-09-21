@@ -1,7 +1,7 @@
 import {FunctionComponent} from "react";
 import {motion} from "framer-motion";
 
-export const Questions: FunctionComponent<{className: string}> = ({className}) => {
+export const Questions: FunctionComponent<{className?: string}> = ({className}) => {
     return (
         <div className={`${className} p-3 bg-[#0884FF] h-full shadow-md rounded-2xl`}>
             <div className={"p-6 h-full bg-white rounded-xl flex flex-col"}>

@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import { Logo } from "./Header/Logo";
+import {SocialMedia} from "./Contacts/SectionAdressMap/SocialMedia";
 
 export const Footer: FunctionComponent = () => {
   return (
@@ -36,7 +37,7 @@ export const Footer: FunctionComponent = () => {
         <div className="flex flex-col text-nowrap text-footer-phone font-bold max-md:text-center md:col-start-2 lg:col-start-3">
           <span>8-915-452-90-61</span>
           <span>8-985-557-27-08</span>
-          <span className="text-header-nav">иконки соцсетей</span>
+        <SocialMedia className={"!gap-5 mx-auto justify-center mt-5 h-[50px]"}/>
         </div>
       </div>
     </div>

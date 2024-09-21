@@ -8,6 +8,7 @@ import { Sprite } from "../components/Sprite";
 import {AboutItem} from "../components/About/AboutItem";
 import {Questions} from "../components/About/Questions";
 import principles from "../components/About/principles";
+import philosophy from "../components/About/philosophy";
 
 const globalGoals: ReactNode = (
     <div className={"p-6 sm:px-10"}>
@@ -108,6 +109,22 @@ export const About: FunctionComponent = () => {
                                    bgClassName={`${item.bgClassName} flex flex-col justify-center sm:block`}
                                    headerClassName={"lg:text-xl pt-0 sm:pt-5"}
                                    pClassName={"lg:text-sm text-center sm:text-start"}/>
+                    )
+                })}
+                <Questions className={"text-black [&_h4]:!text-xl [&_h4]:!pt-1 [&_p]:!text-sm [&_button]:sm:!text-xs [&_button]:md:!text-base [&_button]:!text-base"  }/>
+            </section>
+            <h3 className={"w-fit mx-auto text-4xl font-extrabold tracking-tight"}>Наша философия</h3>
+            <section className={"sm:px-16 max-w-[390px] sm:max-w-screen-md grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto text-black"}>
+                {philosophy.map(item => {
+                    return (
+                        <div className={"flex flex-col shadow-md p-6 rounded-md"}>
+                            <div
+                                style={{backgroundImage: item.backgroundImageUrl}}
+                                className={`bg-no-repeat bg-contain bg-center h-[120px]`}
+                            ></div>
+                            <h4 className={"mb-3 pt-5 text-nowrap w-fit mx-auto text-xl font-bold first-letter:capitalize sm:mb-3 sm:text-start"}>{item.headerText}</h4>
+                            <p className={"max-sm:text-center text-sm sm:text-xs"}>{item.infoText}</p>
+                        </div>
                     )
                 })}
             </section>

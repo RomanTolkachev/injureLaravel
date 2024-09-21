@@ -24,7 +24,7 @@ export default [
         headerText: "многолетний опыт",
         infoText: "Мы имеем более чем 5-летний успешный опыт защиты прав и интересов наших Клиентов.",
         backgroundImageUrl: "url(/svg/about/five.svg)",
-        extraClass: "bg-[#8A9287] ",
+        extraClass: "bg-[#8A9287] overflow-hidden",
         bgClassName: "p-6"
     },
     {
