@@ -5,7 +5,7 @@ import {
   useDispatchTyped as useDispatch,
   useSelectorTyped as useSelector,
 } from "../../services/hooks/typedUseSelector";
-import { setAnimated } from "../../services/actions/animationActions";
+import { setAboutAnimated } from "../../services/actions/animationActions";
 
 const parentVariants = {
   start: {},
@@ -45,7 +45,7 @@ export const WeHaveSomethingToSay: FunctionComponent = () => {
     }
     return () => {
       if (shouldAnimate) {
-        dispatch(setAnimated());
+        dispatch(setAboutAnimated());
       }
     };
   }, [controls, dispatch, shouldAnimate]);
