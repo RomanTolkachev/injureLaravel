@@ -1,6 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./resources/**/*.{js,jsx,ts,tsx,html,php}"],
+  safelist: [
+      'sm:col-span-2',
+      'sm:row-span-2',
+      'sm:col-start-1',
+      'row-span-2',
+      'col-span-2',
+  ],
   theme: {
     fontFamily: {
       Inter: ["inter", "sans-serif"],

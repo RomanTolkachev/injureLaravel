@@ -37,25 +37,25 @@ export const Legal: FunctionComponent<ILegal> = ({
   };
   return (
     <div
-      className={`${className} grid w-fit grid-cols-1 grid-rows-[auto_auto] gap-1`}
+      className={`${className} grid w-full grid-cols-1 grid-rows-[auto_auto] gap-1`}
     >
-      <div className={""}>
+      <div className={"w-fit"}>
         <motion.button
           onClick={handleClick}
-          className={"flex items-center text-news-preview text-my-gray"}
+          className={"grid grid-cols-[auto_auto] place-items-center place-content-start w-fit text-nowrap text-news-preview text-my-gray"}
         >
           <span className="inline-block first-letter:capitalize">
             {isOpen ? "скрыть" : "показать"} юридическую информацию
           </span>
           <motion.span
             animate={isOpen ? rotate : ""}
-            className="inline-block h-[30px] text-my-gray"
+            className="h-[30px] text-my-gray w-[30px] flex justify-start"
           >
-            <Sprite arrow={true} />
+            <Sprite arrow={true} className={"w-fit mr-auto"} />
           </motion.span>
         </motion.button>
         <motion.ul // мобилка
-          className={"space-y-1 overflow-hidden h-0"}
+          className={"space-y-1 overflow-hidden w-fit h-0 sm:flex sm:flex-col"}
           animate={isOpen ? motionShow : motionHide}
         >
           <li>

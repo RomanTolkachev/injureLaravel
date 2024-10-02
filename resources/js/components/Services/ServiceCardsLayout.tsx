@@ -56,7 +56,7 @@ export const ServiceCardsLayout: FunctionComponent<IProps> = ({
           <motion.li
             onClick={(e) => handleClick(e)}
             variants={listVariants}
-            className={`h-full w-full ${item.size}`}
+            className={`${item.size} h-full w-full `}
             key={key}
           >
             <Link to={`${item.id}`} state={{ background: location }}>

@@ -40,14 +40,15 @@ export const About: FunctionComponent = () => {
             <AboutBlock
                 leftSide={globalGoals}
                 rightSide={
-                <div className={"max-sm:w-[160px] pt-6 sm:pr-6 sm:pb-6 mx-auto aspect-square sm:w-full"}>
-                    <Sprite court={true}/>
+                <div className={"max-sm:w-[160px] pt-6 sm:pr-6 sm:pb-6 mx-auto sm:w-full"}>
+                    <Sprite courtShield={true} className={"text-[#0884FF]"}/>
+                    {/*<img className={"text-[#0884FF]"} src="/svg/about/court.svg" alt=""/>*/}
                 </div>
             }/>
             <AboutBlock
                 leftSide={
                     <AboutItem className={''}
-                               bgClassName={'p-6'}
+                               bgClassName={ 'p-6'}
                                text={"Мы специализируемся как на разрешении коммерческих споров в рамках правового сопровождения юридических лиц и индивидуальных предпринимателей, процедурах банкротства и взаимодействии с государственными органами, так и на защите прав и интересов физических лиц по различным вопросам"}
                                header={"наша специализация"} />
                 }
@@ -75,7 +76,7 @@ export const About: FunctionComponent = () => {
                     header={"Истоки"}
                     text={"Компания была образована в июле 2020 года после выхода команды судебных юристов, а также юристов антимонопольной практики из состава крупных юридических фирм, как команда экспертов в области разрешения споров с особым акцентом на защиту бизнеса. В последствии команда была усилена юристами и адвокатами, специализацией которых является защита прав и интересов физических лиц. "} />
                 }
-                rightSide={<Sprite className={"p-6 max-sm:w-[210px]"} group={true}/> }
+                rightSide={<Sprite className={"max-sm:pt-6 sm:p-6 max-sm:w-[210px]"} group={true}/> }
             />
             <AboutBlock
                 gridClass={"gap-4"}
@@ -96,24 +97,28 @@ export const About: FunctionComponent = () => {
                   <Questions className={"[&_button]:sm:mt-5"}/>
                 }
             />
-            <h3 className={"w-[390px] sm:w-[500px] mx-auto"}>
-                <Sprite principles={true} />
+            <div className={"bg-white pb-10"}>
+                <h3 className={"w-[390px] sm:w-[500px] mx-auto"}>
+                    <Sprite principles={true} />
+                </h3>
+                <section className={"sm:px-16 max-w-[390px] sm:max-w-screen-md grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto text-white"}>
+                    {principles.map(item => {
+                        return (
+                            <AboutItem className={`aspect-square rounded-2xl ${item.extraClass}`}
+                                       header={item.headerText}
+                                       text={item.infoText}
+                                       image={item.backgroundImageUrl}
+                                       bgClassName={`${item.bgClassName} flex flex-col justify-center sm:block`}
+                                       headerClassName={"lg:text-xl pt-0 sm:pt-5"}
+                                       pClassName={"lg:text-sm text-center sm:text-start"}/>
+                        )
+                    })}
+                    <Questions className={"text-black [&_h4]:!text-xl [&_h4]:!pt-1 [&_p]:!text-sm [&_button]:sm:!text-xs [&_button]:md:!text-base [&_button]:!text-base"  }/>
+                </section>
+            </div>
+            <h3 className={"w-[390px] sm:w-[500px] mx-auto py-10"}>
+                <Sprite philosophy={true}/>
             </h3>
-            <section className={"sm:px-16 max-w-[390px] sm:max-w-screen-md grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto text-white"}>
-                {principles.map(item => {
-                    return (
-                        <AboutItem className={`aspect-square rounded-2xl ${item.extraClass}`}
-                                   header={item.headerText}
-                                   text={item.infoText}
-                                   image={item.backgroundImageUrl}
-                                   bgClassName={`${item.bgClassName} flex flex-col justify-center sm:block`}
-                                   headerClassName={"lg:text-xl pt-0 sm:pt-5"}
-                                   pClassName={"lg:text-sm text-center sm:text-start"}/>
-                    )
-                })}
-                <Questions className={"text-black [&_h4]:!text-xl [&_h4]:!pt-1 [&_p]:!text-sm [&_button]:sm:!text-xs [&_button]:md:!text-base [&_button]:!text-base"  }/>
-            </section>
-            <h3 className={"w-fit mx-auto text-4xl font-extrabold tracking-tight"}>Наша философия</h3>
             <section className={"sm:px-16 max-w-[390px] sm:max-w-screen-md grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto text-black"}>
                 {philosophy.map(item => {
                     return (

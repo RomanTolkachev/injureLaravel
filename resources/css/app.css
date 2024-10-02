@@ -31,7 +31,6 @@
         background: linear-gradient(rgba(0,0,0,0) 95%, rgba(66,66,66,0.28) 100%);
     }
 
-
     .my-gradient {
         background: linear-gradient(95deg, transparent 0%, rgb(0,196,255) 130%),
         linear-gradient(transparent 0%, #0388ed 100%),
@@ -57,12 +56,6 @@
         box-shadow: 0 0 41px 4px rgba(255, 255, 255, 0.51) inset;
         @apply duration-0
     }
-
-    /*.grid-container {*/
-    /*    display: grid;*/
-    /*    grid-template-columns: 1fr 1fr 1fr 1fr;*/
-    /*    grid-gap: 15px;*/
-    /*}*/
 
     .grid-container::before {
         content: '';
@@ -123,6 +116,26 @@
     @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
+    }
+
+    .col-span-2 {
+        grid-column: span 2 / span 2;
+    }
+
+    .row-span-2 {
+        grid-row: span 2 / span 2;
+    }
+
+    @media (min-width: 640px) {
+        .sm\:col-span-2 {
+            grid-column: span 2 / span 2;
+        }
+    }
+
+    @media (min-width: 640px) {
+        .sm\:row-span-2 {
+            grid-row: span 2 / span 2;
+        }
     }
 
 }
