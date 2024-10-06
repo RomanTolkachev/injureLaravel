@@ -1,12 +1,42 @@
-import { FunctionComponent } from "react";
+import {FunctionComponent, useRef} from "react";
 import { InputCustom } from "./InputCustom";
 import { CallUsPhoto } from "./CallUsPhoto";
 import { IEmployee } from "../../services/utils/types";
 import { CallUsMobile } from "./CallUsMobile";
+import {SubmitErrorHandler, SubmitHandler, useForm, useWatch} from "react-hook-form";
+
+
+export interface IInputs {
+    name: string;
+    email: string;
+    phone: string;
+}
 
 export const CallUs: FunctionComponent<{ employee: IEmployee }> = ({
   employee,
 }) => {
+  const
+      {
+      register,
+      handleSubmit,
+      watch,
+      control,
+      setError,
+      formState:
+          {errors, isValid, isDirty}
+      } = useForm<IInputs>({mode: "onChange"});
+
+
+  const onSubmit: SubmitHandler<IInputs> = data => {
+      console.log(data, data.phone.length)
+      console.log(errors)
+  }
+  const onError: SubmitErrorHandler<IInputs> = data => {
+      console.log("где-то ошибка", data)
+  }
+
+  const forms = watch()
+  console.log(forms)
   return (
     <>
       <div className="mx-auto mb-16 max-w-screen-xl px-16 max-md:hidden">
@@ -20,11 +50,45 @@ export const CallUs: FunctionComponent<{ employee: IEmployee }> = ({
             </span>
             <form
               className="flex w-full flex-col gap-2 px-5 xl:px-14"
-              action=""
+              onSubmit={handleSubmit(onSubmit, onError)}
             >
-              <InputCustom type="text" placeholder="имя" />
-              <InputCustom type="email" placeholder="E-mail" />
-              <InputCustom type="tel" placeholder="Номер телефона" />
+              <InputCustom
+                  type="text"
+                  placeholder="имя"
+                  register={register}
+                  label={'name'}
+                  required
+                  validationPattern={{value: /^[A-Za-zА-Яа-яЁё][A-Za-zА-Яа-яЁё0-9]*$/, message: "имя"}}
+                  error={errors}
+                  minLength={3}
+              />
+              <InputCustom
+                  placeholder="E-mail"
+                  register={register}
+                  label={'email'}
+                  validationPattern={{value:/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,message:"'эмейл"}}
+                  error={errors}
+                  required={!forms.phone}
+              />
+              <InputCustom
+                  type="tel"
+                  placeholder="Номер телефона"
+                  register={register}
+                  label={"phone"}
+                  control={control}
+                  isPhone={true}
+                  setError={setError}
+                  error={errors}
+                  validationPattern={{value:/^(?=(?:.*\d){11,}).*$/, message: "заполните все цифры"}}
+                  required={!forms.email}
+              />
+
+              <button
+                  className={
+                    `${isDirty && isValid && Object.keys(errors).length === 0 ? 'bg-blue-600 text-white' : 'bg-red-200'} rounded-[10px] border border-[#6A6A6A] px-3 py-2 transition-all`
+                  }>
+                  отправить
+              </button>
             </form>
           </div>
           <CallUsPhoto employee={employee} />
