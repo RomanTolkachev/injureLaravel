@@ -49,7 +49,7 @@ export const CallUs: FunctionComponent<{ employee: IEmployee }> = ({
               будем рады ответить на ваши вопросы
             </span>
             <form
-              className="flex w-full flex-col gap-2 px-5 xl:px-14"
+              className="flex w-full flex-col gap-3 px-5 xl:px-14"
               onSubmit={handleSubmit(onSubmit, onError)}
             >
               <InputCustom
