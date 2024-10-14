@@ -2,6 +2,7 @@ import { store } from "../../index";
 import {GET_SERVICES_FAILED, GET_SERVICES_SUCCESS} from "../actions/servicesActions";
 import {Action, ThunkAction} from "@reduxjs/toolkit";
 import {IRootState} from "../reducers/root-reducer";
+import {MESSAGE_FAILED, MESSAGE_SENT, MESSAGE_SENT_SUCCESS} from "../actions/telegramBot";
 
 export interface IMenuItem {
   path: string;
@@ -49,6 +50,21 @@ export interface IServicesFetchFailed {
 }
 
 export type TServicesFetch = IServicesFetchSuccess | IServicesFetchFailed
+
+export interface ITelegramBotMessageSent {
+    type: typeof MESSAGE_SENT
+}
+
+export interface ITelegramBotMessageSuccess {
+    type: typeof MESSAGE_SENT_SUCCESS
+}
+
+export interface ITelegramBotMessageFailed {
+    type: typeof MESSAGE_FAILED,
+    payload: any,
+}
+
+export type TTelegramBotActions = ITelegramBotMessageSent | ITelegramBotMessageSuccess | ITelegramBotMessageFailed
 
 export type AppThunk = ThunkAction<ReturnType<any>, IRootState, unknown, Action>;
 export type TAppDispatch = typeof store.dispatch;

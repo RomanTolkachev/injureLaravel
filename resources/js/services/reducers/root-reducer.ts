@@ -4,6 +4,7 @@ import { mapState } from "./mapReducer";
 import { headerState } from "./headerReducer";
 import { animationState } from "./animationReducer";
 import {servicesState} from "./servicesReducer";
+import {telegramBotState} from "./telegramBotReducer";
 
 export type IRootState = ReturnType<typeof store.getState>;
 
@@ -11,5 +12,6 @@ export const rootReducer = combineReducers({
     mapState: mapState,
     headerState: headerState,
     animationState: animationState,
-    servicesState: servicesState
+    servicesState: servicesState,
+    telegramBotState: telegramBotState,
 });
