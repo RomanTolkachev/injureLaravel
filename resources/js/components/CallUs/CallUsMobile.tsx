@@ -2,6 +2,9 @@ import { FunctionComponent } from "react";
 import { ButtonCallUs } from "../buttons/ButtonCallUs";
 import { IEmployee } from "../../services/utils/types";
 import { ImgCustom } from "../utils/ImgCustom";
+import {createPortal} from "react-dom";
+import Modal from "../Modal/Modal";
+import {useLocation} from "react-router-dom";
 
 export const CallUsMobile: FunctionComponent<{ employee: IEmployee }> = ({
   employee,
@@ -53,6 +56,7 @@ export const CallUsMobile: FunctionComponent<{ employee: IEmployee }> = ({
           <ButtonCallUs>оставить заявку</ButtonCallUs>
         </div>
       </>
+        {/*{createPortal(<Modal children={<div>я модалка</div>} closeModal={() =>{}}/>, document.getElementById('portal') as HTMLElement)}*/}
     </div>
   );
 };

@@ -6,10 +6,10 @@ import { News } from "../components/Main/News/News";
 
 export const Main: FunctionComponent = () => {
   return (
-    <div>
+    <>
       <Hero />
       <News />
       <CallUs employee={team[0]} />
-    </div>
+    </>
   );
 };
