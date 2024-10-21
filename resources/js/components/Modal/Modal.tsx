@@ -121,7 +121,7 @@ const Modal: React.FunctionComponent<IModalProps> = ({
   }, [closeModal]);
 
   return createPortal(
-    location.state.background && (
+     (
       <motion.section
         variants={modalVariants}
         initial="start"
@@ -133,7 +133,7 @@ const Modal: React.FunctionComponent<IModalProps> = ({
       >
         <div
           className={
-            "relative z-[12] my-auto h-full max-h-full w-full overflow-hidden rounded-3xl bg-my-white py-10 sm:pb-10 lg:h-fit lg:w-[700px] lg:pt-20"
+            "relative z-[12] my-auto h-full max-h-full w-full overflow-hidden rounded-3xl bg-white py-10 sm:pb-10 lg:h-fit lg:w-[700px] lg:pt-20"
           }
           ref={innerRef}
         >

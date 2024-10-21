@@ -1,5 +1,5 @@
 import {IServiceItem} from "./types";
-import {IInputs} from "../../components/CallUs/CallUs";
+import {IInputs} from "../../components/utils/Form";
 
 
 // Запрашиваем список услуг

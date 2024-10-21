@@ -61,32 +61,33 @@ export const Sprite: FunctionComponent<ISprite> = ({
     <>
       {logo && (
         <svg
+          className={`${className}`}
           xmlns="http://www.w3.org/2000/svg"
           width="100%"
           height="100%"
           fill="#3D3D3D"
           viewBox="0 0 796 179"
         >
-          <path d="M33.7068 176.578H0V0H33.7068V176.578Z" fill="white"></path>
+          <path d="M33.7068 176.578H0V0H33.7068V176.578Z" fill="currentColor"></path>
           <path
             d="M46.794 176.578V0H89.2307L170.224 126.681V0H203.446V176.578H164.162L80.2583 47.475V176.578H46.794Z"
-            fill="white"
+            fill="currentColor"
           ></path>
           <path
             d="M271.388 179C229.921 179 208.824 155.505 208.824 119.899V92.77H242.774V120.141C242.774 141.456 254.171 148.723 271.631 148.723C293.455 148.723 300.73 137.338 300.73 120.141V0H334.437V119.899C334.437 159.138 309.46 179 271.388 179Z"
-            fill="white"
+            fill="currentColor"
           ></path>
           <path
             d="M343.515 113.116V0H377.465V110.936C377.465 138.065 394.439 148.723 419.659 148.723C449.001 148.723 461.61 134.189 461.61 110.936V0H495.317V113.116C495.317 152.598 469.37 179 419.174 179C372.13 179 343.515 155.263 343.515 113.116Z"
-            fill="white"
+            fill="currentColor"
           ></path>
           <path
             d="M506.398 176.578V0H595.394C630.798 0 652.623 18.4087 652.623 48.2016C652.623 68.3058 641.71 84.2923 623.281 90.1055C646.56 94.9499 649.47 105.85 649.47 123.047V164.225C649.47 168.1 650.44 172.46 653.835 174.156V176.578H618.673C616.733 173.429 615.763 169.069 615.763 161.318V127.65C615.763 113.601 612.611 106.334 597.091 106.334H540.105V176.578H506.398ZM540.105 78.2368H588.846C607.034 78.2368 616.976 69.0325 616.976 53.5304C616.976 37.0595 606.306 29.0663 589.332 29.0663H540.105V78.2368Z"
-            fill="white"
+            fill="currentColor"
           ></path>
           <path
             d="M661.415 176.578V0H788.725V28.8241H695.122V72.6658H778.298V100.521H695.122V147.512H796V176.578H661.415Z"
-            fill="white"
+            fill="currentColor"
           ></path>
         </svg>
       )}
@@ -372,7 +373,7 @@ export const Sprite: FunctionComponent<ISprite> = ({
               </g>
               <defs>
                   <filter id="filter0_d_954_155" x="39.1081" y="28.335" width="282.342" height="282.342"
-                          filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                       <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                                      result="hardAlpha"/>
@@ -384,7 +385,7 @@ export const Sprite: FunctionComponent<ISprite> = ({
                       <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_954_155" result="shape"/>
                   </filter>
                   <filter id="filter1_d_954_155" x="0.614535" y="194.364" width="158.963" height="158.963"
-                          filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                       <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                                      result="hardAlpha"/>
@@ -397,7 +398,7 @@ export const Sprite: FunctionComponent<ISprite> = ({
                       <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_954_155" result="shape"/>
                   </filter>
                   <filter id="filter2_d_954_155" x="11.6722" y="0.0671251" width="127.702" height="127.702"
-                          filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                       <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                                      result="hardAlpha"/>

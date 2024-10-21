@@ -1,4 +1,4 @@
-import {MESSAGE_FAILED, MESSAGE_SENT, MESSAGE_SENT_SUCCESS} from "../actions/telegramBot";
+import {MESSAGE_FAILED, MESSAGE_SENT, MESSAGE_SENT_PROCESS_OVER, MESSAGE_SENT_SUCCESS} from "../actions/telegramBot";
 import {TTelegramBotActions} from "../utils/types";
 
 export interface ITGBOTReducer {
@@ -22,17 +22,22 @@ export const telegramBotState = (state: ITGBOTReducer = initialState, action: TT
                 messageSent: true,
             }
         }
+        case MESSAGE_SENT_PROCESS_OVER: {
+            return {
+                ...state,
+                messageSent: false,
+            }
+        }
         case MESSAGE_SENT_SUCCESS: {
             return {
                 ...state,
                 messageSentSuccess: true,
-                messageSent: false,
             }
         }
         case MESSAGE_FAILED: {
             return {
                 ...state,
-                messageSentSuccess: true,
+                messageSentSuccess: false,
                 error: action.payload
             }
         }

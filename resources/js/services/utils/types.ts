@@ -2,7 +2,8 @@ import { store } from "../../index";
 import {GET_SERVICES_FAILED, GET_SERVICES_SUCCESS} from "../actions/servicesActions";
 import {Action, ThunkAction} from "@reduxjs/toolkit";
 import {IRootState} from "../reducers/root-reducer";
-import {MESSAGE_FAILED, MESSAGE_SENT, MESSAGE_SENT_SUCCESS} from "../actions/telegramBot";
+import {MESSAGE_FAILED, MESSAGE_SENT, MESSAGE_SENT_PROCESS_OVER, MESSAGE_SENT_SUCCESS} from "../actions/telegramBot";
+import {SET_CALL_US_MODAL_CLOSED, SET_CALL_US_MODAL_OPEN} from "../actions/callUsActions";
 
 export interface IMenuItem {
   path: string;
@@ -51,8 +52,14 @@ export interface IServicesFetchFailed {
 
 export type TServicesFetch = IServicesFetchSuccess | IServicesFetchFailed
 
+export type TTelegramBotActions = ITelegramBotMessageSent | ITelegramBotMessageSuccess | ITelegramBotMessageFailed | ITelegramBotMessageSentProcessOver
+
 export interface ITelegramBotMessageSent {
     type: typeof MESSAGE_SENT
+}
+
+export interface ITelegramBotMessageSentProcessOver {
+    type: typeof MESSAGE_SENT_PROCESS_OVER
 }
 
 export interface ITelegramBotMessageSuccess {
@@ -64,7 +71,16 @@ export interface ITelegramBotMessageFailed {
     payload: any,
 }
 
-export type TTelegramBotActions = ITelegramBotMessageSent | ITelegramBotMessageSuccess | ITelegramBotMessageFailed
+export type TCallUsModal = ISetCallUsModalOpen | ISetCallUsModalClosed;
+
+export interface ISetCallUsModalOpen {
+    type: typeof SET_CALL_US_MODAL_OPEN
+}
+
+export interface ISetCallUsModalClosed {
+    type: typeof SET_CALL_US_MODAL_CLOSED
+}
+
 
 export type AppThunk = ThunkAction<ReturnType<any>, IRootState, unknown, Action>;
 export type TAppDispatch = typeof store.dispatch;

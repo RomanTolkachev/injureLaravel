@@ -4,12 +4,18 @@ import { IEmployee } from "../../services/utils/types";
 import { ImgCustom } from "../utils/ImgCustom";
 import {createPortal} from "react-dom";
 import Modal from "../Modal/Modal";
-import {useLocation} from "react-router-dom";
+import {useDispatchTyped as useDispatch, useSelectorTyped as useSelector} from "../../services/hooks/typedUseSelector";
+import {closeCallUsModal, openCallUsModal} from "../../services/actions/callUsActions";
+import {AnimatePresence} from "framer-motion";
+import {CallUsModal} from "../Modal/CallUsModal";
+
 
 export const CallUsMobile: FunctionComponent<{ employee: IEmployee }> = ({
   employee,
 }) => {
-  return (
+  const dispatch = useDispatch()
+  const isCallUsModalOpen= useSelector(state => state.callUsModalState.isCallUsModalOpen)
+    return (
     <div className="relative mx-auto mb-10 w-[390px] overflow-hidden rounded-3xl pt-6 shadow-[0px_12px_51px_-12px_rgba(34,60,80,0.26);] md:hidden">
       <>
         <h2 className="mx-auto mb-2 w-fit text-4xl font-bold tracking-tight text-[#399DFF]">
@@ -52,11 +58,21 @@ export const CallUsMobile: FunctionComponent<{ employee: IEmployee }> = ({
             />
           </svg>
         </div>
-        <div className="absolute left-1/2 top-0 z-[4] flex h-full w-full max-w-[480px] -translate-x-1/2 items-end px-10 pb-10">
-          <ButtonCallUs>оставить заявку</ButtonCallUs>
+        <div  onClick={() => dispatch(openCallUsModal())} className="absolute left-1/2 top-0 z-[4] flex h-full w-full max-w-[480px] -translate-x-1/2 items-end px-10 pb-10">
+          <ButtonCallUs color={"whiteColor"}>оставить заявку</ButtonCallUs>
         </div>
       </>
-        {/*{createPortal(<Modal children={<div>я модалка</div>} closeModal={() =>{}}/>, document.getElementById('portal') as HTMLElement)}*/}
+        {
+            createPortal(
+                <AnimatePresence mode="wait">
+                    {isCallUsModalOpen &&
+                        <Modal children={<CallUsModal />}
+                               closeModal={() => dispatch(closeCallUsModal())}/>
+                    }
+                </AnimatePresence>,
+                document.getElementById('portal') as HTMLElement
+            )
+        }
     </div>
   );
 };

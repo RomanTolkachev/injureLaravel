@@ -1,4 +1,5 @@
-import {FunctionComponent, InputHTMLAttributes} from "react";
+import React, {FunctionComponent, InputHTMLAttributes} from "react";
+import { v4 as uuidv4 } from 'uuid';
 import {
     UseFormRegister,
     Path,
@@ -8,7 +9,7 @@ import {
     FieldErrors, Validate
 } from "react-hook-form";
 import InputMask from 'react-input-mask';
-import {IInputs} from "./CallUs";
+import {IInputs} from "../utils/Form";
 
 interface Pattern {
     value: RegExp;
@@ -17,10 +18,10 @@ interface Pattern {
 
 interface InputCustomProps extends InputHTMLAttributes<HTMLInputElement> {
     register: UseFormRegister<any>,
-    label: Path<IInputs>,
+    label: string,
     required?: boolean,
     className?: string
-    error?: FieldErrors<IInputs>,
+    error?: any,
     validationPattern?: Pattern
     minLength?: number,
     isPhone?: boolean,
@@ -28,6 +29,7 @@ interface InputCustomProps extends InputHTMLAttributes<HTMLInputElement> {
     setError?: UseFormSetError<IInputs>,
     isSubmitted?: boolean
     validationValue?: string
+    id: string
 }
 
 const errorStyle: string = 'border-red-600 focus:outline-red-600'
@@ -44,14 +46,14 @@ export const InputCustom: FunctionComponent<InputCustomProps> = ({
   isPhone,
   control,
   isSubmitted,
-  validationValue
+  validationValue,
+  id
 }) => {
-
     return ( !isPhone ?
         <>
-            <div className={'relative'}>
+            <div className={'relative'} onClick={e => e.stopPropagation()}>
                 <input
-                    id={label}
+                    id={id}
                     className={`${className} ${!(error) || error[label] ? errorStyle : ""}
                         w-full rounded-[10px] border border-[#6A6A6A]
                         px-3 py-2  placeholder-transparent
@@ -61,7 +63,6 @@ export const InputCustom: FunctionComponent<InputCustomProps> = ({
                     type={type}
                     placeholder={placeholder}
                     {...register(label, {
-                        // required: "обязательное поле",
                         pattern: validationPattern ? validationPattern : undefined,
                         minLength: minLength,
                         validate: value => {
@@ -75,8 +76,9 @@ export const InputCustom: FunctionComponent<InputCustomProps> = ({
 
                 />
                 <label
-                    htmlFor={label}
-                    className={"absolute top-0 -translate-y-1/2 left-2 w-fit h-fit text-gray-600 bg-white z-[2] px-1.5 select-none leading-3 text-sm transition-all" +
+                    onClick={e => {}}
+                    htmlFor={id}
+                    className={"absolute hover:cursor-text top-0 -translate-y-1/2 left-2 w-fit h-fit text-gray-600 bg-white z-[2] px-1.5 leading-3 text-sm transition-all" +
                         " peer-focus:top-0 " +
                         " peer-focus:text-sm " +
                         " peer-focus:text-gray-600 " +
@@ -98,7 +100,7 @@ export const InputCustom: FunctionComponent<InputCustomProps> = ({
         </>
             :
         <Controller
-            name={label}
+            name={label as any}
             control={control}
             rules={{pattern: validationPattern ? validationPattern : undefined,
                     validate: value => {
@@ -111,7 +113,7 @@ export const InputCustom: FunctionComponent<InputCustomProps> = ({
                 <div className={'relative'}>
                     <InputMask
                         {...field}
-                        id={label}
+                        id={id}
                         className={
                             `${!(error) || error[label] ? errorStyle : ""}
                             w-full rounded-[10px] border border-[#6A6A6A]
@@ -125,8 +127,9 @@ export const InputCustom: FunctionComponent<InputCustomProps> = ({
 
                     </InputMask>
                     <label
-                        htmlFor={label}
-                        className={"absolute top-0 -translate-y-1/2 left-2 w-fit h-fit text-gray-600 bg-white z-[2] px-1.5 select-none leading-3 text-sm transition-all" +
+                        onClick={e => {}}
+                        htmlFor={id}
+                        className={"absolute hover:cursor-text top-0 -translate-y-1/2 left-2 w-fit h-fit text-gray-600 bg-white z-[2] px-1.5 leading-3 text-sm transition-all" +
                             " peer-focus:top-0 " +
                             " peer-focus:text-sm " +
                             " peer-focus:text-gray-600 " +

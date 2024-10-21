@@ -102,9 +102,10 @@ export const About: FunctionComponent = () => {
                     <Sprite principles={true} />
                 </h3>
                 <section className={"sm:px-16 max-w-[390px] sm:max-w-screen-md grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto text-white"}>
-                    {principles.map(item => {
+                    {principles.map((item, key) => {
                         return (
                             <AboutItem className={`aspect-square rounded-2xl ${item.extraClass}`}
+                                       key={key}
                                        header={item.headerText}
                                        text={item.infoText}
                                        image={item.backgroundImageUrl}
@@ -120,9 +121,9 @@ export const About: FunctionComponent = () => {
                 <Sprite philosophy={true}/>
             </h3>
             <section className={"sm:px-16 max-w-[390px] sm:max-w-screen-md grid grid-cols-1 sm:grid-cols-2 gap-2 mx-auto text-black"}>
-                {philosophy.map(item => {
+                {philosophy.map((item, key) => {
                     return (
-                        <div className={"flex flex-col shadow-md p-6 rounded-md"}>
+                        <div key={key} className={"flex flex-col shadow-md p-6 rounded-md"}>
                             <div
                                 style={{backgroundImage: item.backgroundImageUrl}}
                                 className={`bg-no-repeat bg-contain bg-center h-[120px]`}
