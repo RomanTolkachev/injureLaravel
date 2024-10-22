@@ -19,6 +19,9 @@ export const CallUs: FunctionComponent<{ employee: IEmployee }> = ({
     const isMessageSent = useSelector(
         (state) => state.telegramBotState.messageSent,
     );
+    const isModalOpen = useSelector(
+        (state) => state.callUsModalState.isCallUsModalOpen,
+    );
     const messageSentSuccess = useSelector(
         (state) => state.telegramBotState.messageSentSuccess,
     );
@@ -71,16 +74,16 @@ export const CallUs: FunctionComponent<{ employee: IEmployee }> = ({
 
     useEffect(() => {
         const showEmptyForm = (): void => {
-            dispatch(sendMessageProcessOver());
+            dispatch(sendMessageProcessOver())();
         };
-        if (
-            getComputedStyle(formWideRef.current!).display !== "none" &&
-            isMessageSent &&
-            messageSentSuccess &&
-            formWideRef.current
-        ) {
-            setTimeout(showEmptyForm, 3000);
-        }
+        // if (
+        //     getComputedStyle(formWideRef.current!).display !== "none" &&
+        //     isMessageSent &&
+        //     messageSentSuccess &&
+        //     formWideRef.current
+        // ) {
+        //     setTimeout(showEmptyForm, 3000);
+        // }
     }, [isMessageSent, messageSentSuccess, formWideRef.current]);
 
     return (

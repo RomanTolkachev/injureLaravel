@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useScrollLock } from "../../services/hooks/useScrollLock";
 import { motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
 import { Sprite } from "../Sprite";
 
 interface IModalProps {
@@ -64,8 +63,6 @@ const Modal: React.FunctionComponent<IModalProps> = ({
     closeModal,
     children,
 }) => {
-    const location = useLocation();
-
     // функция блокировки сролла при монтировании
 
     const { lockScroll, unlockScroll } = useScrollLock();

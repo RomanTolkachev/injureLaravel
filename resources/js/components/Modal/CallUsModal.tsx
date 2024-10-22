@@ -67,7 +67,7 @@ export const CallUsModal: FunctionComponent = () => {
     return (
         <div
             className={
-                "my-auto flex h-fit w-full flex-col items-center justify-center gap-7 max-lg:h-full"
+                "my-auto flex h-fit min-h-[379.45px] w-full flex-col items-center justify-center gap-7 max-lg:h-full"
             }
         >
             <AnimatePresence mode={"wait"}>
