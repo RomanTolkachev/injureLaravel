@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useMemo} from "react";
+import React, { useCallback, useMemo } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Main } from "./pages/Main";
 import { About } from "./pages/About";
@@ -39,36 +39,59 @@ function App(): React.JSX.Element {
                 <section className="shrink grow">
                     <div className="h-[79px]"></div>
                     <AnimatePresence mode="wait">
-                        <Routes location={memoizedLocation} key={memoizedLocation.pathname}>
+                        <Routes
+                            location={memoizedLocation}
+                            key={memoizedLocation.pathname}
+                        >
                             <Route
                                 path="/"
-                                element={<AnimatedPageRouting children={<Main />} />}
+                                element={
+                                    <AnimatedPageRouting children={<Main />} />
+                                }
                             />
                             <Route
                                 path="/about"
-                                element={<AnimatedPageRouting children={<About />} />}
+                                element={
+                                    <AnimatedPageRouting children={<About />} />
+                                }
                             />
                             <Route
                                 path="/services"
-                                element={<AnimatedPageRouting children={<Services />} />}
+                                element={
+                                    <AnimatedPageRouting
+                                        children={<Services />}
+                                    />
+                                }
                             ></Route>
                             <Route
                                 path={"services/:serviceId"}
                                 element={
-                                    <ContainerIfNoBackground children={<ServiceLongRead />} />
+                                    <ContainerIfNoBackground
+                                        children={<ServiceLongRead />}
+                                    />
                                 }
                             />
                             <Route
                                 path="/team"
-                                element={<AnimatedPageRouting children={<Team />} />}
+                                element={
+                                    <AnimatedPageRouting children={<Team />} />
+                                }
                             />
                             <Route
                                 path="/portfolio"
-                                element={<AnimatedPageRouting children={<Portfolio />} />}
+                                element={
+                                    <AnimatedPageRouting
+                                        children={<Portfolio />}
+                                    />
+                                }
                             />
                             <Route
                                 path="/contacts"
-                                element={<AnimatedPageRouting children={<Contacts />} />}
+                                element={
+                                    <AnimatedPageRouting
+                                        children={<Contacts />}
+                                    />
+                                }
                             />
                         </Routes>
                     </AnimatePresence>
@@ -81,7 +104,10 @@ function App(): React.JSX.Element {
                         <Route
                             path={"services/:serviceId"}
                             element={
-                                <Modal closeModal={closeModal} children={<ServiceLongRead />} />
+                                <Modal
+                                    closeModal={closeModal}
+                                    children={<ServiceLongRead />}
+                                />
                             }
                         />
                     </Routes>
