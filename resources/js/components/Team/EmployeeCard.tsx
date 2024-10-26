@@ -3,19 +3,9 @@ import { IEmployee } from "../../services/utils/types";
 import { BGTeam } from "../SVG/BGTeam";
 import { Sprite } from "../Sprite";
 import { ImgCustom } from "../utils/ImgCustom";
-import { AnimatePresence, motion } from "framer-motion";
-import {
-    useDispatchTyped as useDispatch,
-    useSelectorTyped as useSelector,
-} from "../../services/hooks/typedUseSelector";
+import { useDispatchTyped as useDispatch } from "../../services/hooks/typedUseSelector";
 import { ButtonSquare } from "../buttons/ButtonSquare";
-import {
-    closeCallUsModal,
-    openCallUsModal,
-} from "../../services/actions/callUsActions";
-import { createPortal } from "react-dom";
-import Modal from "../Modal/Modal";
-import { CallUsModal } from "../Modal/CallUsModal";
+import { openCallUsModal } from "../../services/actions/callUsActions";
 
 interface IEmployeeCard {
     person: IEmployee;
@@ -23,9 +13,6 @@ interface IEmployeeCard {
 
 export const EmployeeCard: FunctionComponent<IEmployeeCard> = ({ person }) => {
     const dispatch = useDispatch();
-    const isCallUsModalOpen = useSelector(
-        (state) => state.callUsModalState.isCallUsModalOpen,
-    );
     return (
         <>
             <div className="mx-auto hidden w-full max-w-[1024px] shadow-lg md:flex [&>div]:basis-1/2">

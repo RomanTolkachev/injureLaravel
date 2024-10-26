@@ -1,23 +1,16 @@
-import { FunctionComponent } from "react";
-import { motion } from "framer-motion";
+import { FunctionComponent, useContext } from "react";
+import { AnimationSettingsContext } from "./Carousel";
 
 interface IProps {
     key: number;
     logoPath: string;
-    spacing?: number;
 }
 
-export const CarouselItem: FunctionComponent<IProps> = ({
-    logoPath,
-    key,
-    spacing = 8,
-}) => {
+export const CarouselItem: FunctionComponent<IProps> = ({ logoPath, key }) => {
+    const { spacing } = useContext(AnimationSettingsContext);
     return (
-        <motion.div
-            key={key}
-            className={`mr-${spacing} inline-block h-full w-fit`}
-        >
+        <div key={key} className={`mr-${spacing} inline-block h-full w-fit`}>
             <img className={"h-full"} src={logoPath} alt={""} />
-        </motion.div>
+        </div>
     );
 };
