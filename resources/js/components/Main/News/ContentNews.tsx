@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { Date } from "./Date";
+import { DateComponent } from "./DateComponent";
 
 interface IContentNewsProps {
   header: string;
@@ -18,7 +18,7 @@ export const ContentNews: FunctionComponent<IContentNewsProps> = ({
         {header}
       </h3>
       <div className="mb-2 sm:hidden">
-        <Date date={date} />
+        <DateComponent date={date} />
       </div>
       <span className="text-news-preview text-my-gray sm:text-base">
         {preview}
