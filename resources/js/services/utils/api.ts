@@ -3,7 +3,7 @@ import { IInputs } from "../../components/utils/Form";
 
 // Запрашиваем список услуг
 
-// export const BASE_URL: "http://127.0.0.1:8000/api" = "http://127.0.0.1:8000/api";
+export const LOCAL_URL: "http://127.0.0.1:8000/api" = "http://127.0.0.1:8000/api";
 export const BASE_URL: "https://in-jure.com/api" = "https://in-jure.com/api";
 
 export const fetchServices = (): Promise<IServiceItem[]> => {
@@ -39,3 +39,16 @@ export const sendRequest = (data: IInputs) => {
         }),
     }).then((res) => checkResponse(res));
 };
+
+// Запрос новостей
+
+const NEWS_PER_REQUEST: number = 4;
+
+export const getFourNews = (page: number) => {
+    return fetch(`${LOCAL_URL}/news/?page=${page}&rows=${NEWS_PER_REQUEST}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        }}
+    ).then(res => checkResponse(res))
+}

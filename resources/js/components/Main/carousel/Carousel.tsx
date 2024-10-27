@@ -17,7 +17,7 @@ interface IAnimationSettings {
 export const AnimationSettingsContext = createContext<IAnimationSettings>({
     speed: 5,
     spacing: 8,
-});
+})
 
 export const Carousel: FunctionComponent<IProps> = ({
     className,
@@ -46,7 +46,7 @@ export const Carousel: FunctionComponent<IProps> = ({
     return (
         <AnimationSettingsContext.Provider value={{ spacing, speed }}>
             <div
-                className={`${className} absolute h-20 max-w-screen-2xl overflow-hidden py-5`}
+                className={`${className} h-20 max-w-screen-2xl overflow-hidden py-5`}
             >
                 <div className={"flex h-full w-max"}>
                     <motion.div

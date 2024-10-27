@@ -15,6 +15,12 @@ import {
     SET_CALL_US_MODAL_CLOSED,
     SET_CALL_US_MODAL_OPEN,
 } from "../actions/callUsActions";
+import {
+    PUSH_NEWS,
+    SET_NEWS_REQUEST_ERROR,
+    SET_NEWS_REQUEST_SENT,
+    SET_NEWS_REQUEST_SUCCESS
+} from "../actions/newsActions";
 
 export interface IMenuItem {
     path: string;
@@ -86,6 +92,26 @@ export interface ITelegramBotMessageFailed {
     type: typeof MESSAGE_FAILED;
     payload: any;
 }
+
+// новости
+
+interface INewsRequestSent {
+    type: typeof SET_NEWS_REQUEST_SENT,
+}
+interface INewsRequestSuccess {
+    type: typeof SET_NEWS_REQUEST_SUCCESS,
+}
+interface INewsRequestFailed {
+    type: typeof SET_NEWS_REQUEST_ERROR,
+}
+interface IPushNews {
+    type: typeof PUSH_NEWS,
+    payload: Array<INews>,
+}
+export type INewsActions = INewsRequestSent | INewsRequestFailed | IPushNews | INewsRequestSuccess;
+
+//
+
 
 export type TCallUsModal = ISetCallUsModalOpen | ISetCallUsModalClosed;
 

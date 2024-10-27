@@ -1,4 +1,4 @@
-INSERT INTO larareact.services
+INSERT INTO `local_in-jure`.services
 (
      id,
      title,

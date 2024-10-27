@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GetNewsController;
 use App\Http\Controllers\GetPortfolioDocumentController;
 use App\Http\Controllers\GetPortfoliosController;
 use App\Http\Controllers\GetServicesController;
@@ -19,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 Route::get("services", GetServicesController::class);
 Route::get("portfolios", GetPortfoliosController::class);
 Route::get("portfolios/document", GetPortfolioDocumentController::class);
+Route::get("news", GetNewsController::class);
