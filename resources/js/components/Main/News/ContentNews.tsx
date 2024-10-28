@@ -4,7 +4,7 @@ import { DateComponent } from "./DateComponent";
 interface IContentNewsProps {
   header: string;
   preview: string;
-  date: Date;
+  date: string;
 }
 
 export const ContentNews: FunctionComponent<IContentNewsProps> = ({

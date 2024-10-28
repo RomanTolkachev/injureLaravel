@@ -12,13 +12,17 @@ export interface INewsReducer {
     newsRequestSentSuccess: boolean
     newsRequestError: boolean
     newsData: Array<INews> | []
+    currentPage: number
+    lastPage: number
 }
 
 const initialState: INewsReducer = {
     newsRequestSent: false,
     newsRequestSentSuccess: false,
     newsRequestError: false,
-    newsData: []
+    newsData: [],
+    currentPage: 1,
+    lastPage: 0
 }
 
 export const newsReducer = (state: INewsReducer = initialState, action: INewsActions) => {
@@ -38,7 +42,9 @@ export const newsReducer = (state: INewsReducer = initialState, action: INewsAct
         case PUSH_NEWS: {
             return {
                 ...state,
-                newsData: [...state.newsData, ...action.payload]
+                newsData: [...state.newsData, ...action.payload.fetchedNews],
+                currentPage: action.payload.currentPage,
+                lastPage: action.payload.lastPage
             }
         };
         case SET_NEWS_REQUEST_ERROR: {

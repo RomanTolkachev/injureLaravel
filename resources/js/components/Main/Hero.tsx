@@ -1,12 +1,11 @@
 import { motion, useAnimation } from "framer-motion";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { ButtonToVideo } from "../buttons/ButtonToVideo";
 import {
     useDispatchTyped as useDispatch,
     useSelectorTyped as useSelector,
 } from "../../services/hooks/typedUseSelector";
 import { setFemidaAnimated } from "../../services/actions/animationActions";
-import { partners } from "../../services/utils/partners";
 import { Carousel } from "./carousel/Carousel";
 const femidaVariants = {
     start: {

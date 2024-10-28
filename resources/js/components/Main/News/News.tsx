@@ -1,40 +1,43 @@
-import { FunctionComponent, useEffect } from "react";
-import { news } from "../../../services/utils/news";
+import { FunctionComponent, MouseEventHandler, useCallback, useEffect, useRef } from "react";
 import { HeaderNews } from "./HeaderNews";
-import { NewsItem } from "./NewsItem";
-import { v7 as uuid } from "uuid";
 import { useDispatchTyped as useDispatch, useSelectorTyped as useSelector} from "../../../services/hooks/typedUseSelector";
-import {  requestNews } from "../../../services/actions/newsActions";
+import { requestNews } from "../../../services/actions/newsActions";
+import useScrollToRef from "../../../services/hooks/useScrollToRef";
+import { PreloaderComponent } from "../../utils/PreloaderComponent";
+import { NewsList } from "./NewsList";
+
 
 export const News: FunctionComponent = () => {
-  const newsWithId = news.map((item) => {
-    return { ...item, id: uuid() };
-  });
   const dispatch = useDispatch();
-  const newsSource = useSelector(state => state.newsState.newsData)
+  const newsSource = useSelector(state => state.newsState.newsData);
+  const currentPage = useSelector(state => state.newsState.currentPage);
+  const lastPage =  useSelector(state => state.newsState.lastPage);
+  const isRequestSent =  useSelector(state => state.newsState.newsRequestSent);
+  const firstNewItemRef = useRef<HTMLLIElement>(null);
 
-  useEffect(() => {
-      dispatch(requestNews(1))
+
+
+  useEffect( () => {
+    if (!newsSource.length) {
+        dispatch(requestNews(1));
+    }
   }, [])
+
+  const handleClick = useCallback<MouseEventHandler<HTMLButtonElement>>(async () => {
+    await dispatch(requestNews(currentPage + 1));
+  },[currentPage])
+
   return (
     <div className="sm:white-bottom-mask mx-auto max-w-[1024px] px-5 py-10 max-lg:container sm:px-0 sm:py-14 md:py-20 lg:py-32">
       <HeaderNews />
-      <ul className="[&>li]:border-b [&>li]:border-b-my-main-blue">
-        {/*{newsWithId.slice(0, 3).map((item) => {*/}
-        {/*  return (*/}
-        {/*    <li key={item.id}>*/}
-        {/*      <NewsItem news={item} />*/}
-        {/*    </li>*/}
-        {/*  );*/}
-        {/*})}*/}
-          {newsSource && newsSource.map((item) => {
-              return (
-                  <li key={item.id}>
-                      <NewsItem news={item} />
-                  </li>
-              );
-          })}
-      </ul>
+      {newsSource.length === 0 && isRequestSent
+          ? <div className={"h-[120px] p-8"}><PreloaderComponent /></div>
+          : <NewsList newsSource={newsSource} ref={firstNewItemRef}/>
+      }
+
+      {currentPage < lastPage ? (
+          <button onClick={handleClick}>далее</button>
+      ) : <span>больше нету</span>}
     </div>
   );
 };

@@ -1,14 +1,22 @@
 import { getFourNews } from "../utils/api";
-import { AppThunk, INews, INewsActions } from "../utils/types";
+import { AppThunk, INewsActions } from "../utils/types";
+import { INews } from "../utils/newsType";
 
 export const SET_NEWS_REQUEST_SENT:"SET_NEWS_REQUEST_SENT" = "SET_NEWS_REQUEST_SENT";
 export const SET_NEWS_REQUEST_SUCCESS: "SET_NEWS_REQUEST_SENT" = "SET_NEWS_REQUEST_SENT";
 export const SET_NEWS_REQUEST_ERROR: "SET_NEWS_REQUEST_ERROR" = "SET_NEWS_REQUEST_ERROR";
 export const PUSH_NEWS: "PUSH_NEWS" = "PUSH_NEWS";
+export const SET_NEWS_REQUEST_OVER: "SET_NEWS_REQUEST_OVER" = "SET_NEWS_REQUEST_OVER";
 
 export const setNewsRequestSent = (): INewsActions => {
     return {
         type: SET_NEWS_REQUEST_SENT
+    }
+}
+
+export const setNewsRequestOver = (): INewsActions => {
+    return {
+        type: SET_NEWS_REQUEST_OVER
     }
 }
 
@@ -24,17 +32,23 @@ export const setNewsRequestFailed = (): INewsActions => {
     }
 }
 
-export const pushNews = (fetchedData: Array<INews>): INewsActions => {
+export const pushNews = (res:any): INewsActions => {
     return {
         type: PUSH_NEWS,
-        payload: fetchedData
+        payload: {
+            fetchedNews: res.data,
+            currentPage: res.current_page,
+            lastPage: res.last_page
+        }
     }
 }
 
 export const requestNews = (page: number): AppThunk => {
     return dispatch => {
-        return getFourNews(page)
-            .then((res: any) => dispatch(pushNews(res.data)))
+            dispatch(setNewsRequestSent());
+            getFourNews(page)
+            .then((res: any) => dispatch(pushNews(res)))
             .catch(err => dispatch(setNewsRequestFailed()))
+            .finally(() => dispatch(setNewsRequestOver()))
     }
 }

@@ -17,10 +17,11 @@ import {
 } from "../actions/callUsActions";
 import {
     PUSH_NEWS,
-    SET_NEWS_REQUEST_ERROR,
+    SET_NEWS_REQUEST_ERROR, SET_NEWS_REQUEST_OVER,
     SET_NEWS_REQUEST_SENT,
     SET_NEWS_REQUEST_SUCCESS
 } from "../actions/newsActions";
+import { INews } from "./newsType";
 
 export interface IMenuItem {
     path: string;
@@ -41,15 +42,6 @@ export interface IEmployee {
         legalBody: string;
     };
 }
-
-export interface INews {
-    date: Date;
-    header: string;
-    preview: string;
-    text: string;
-    id?: string;
-}
-
 export interface IServiceItem {
     title: string;
     type: string;
@@ -98,6 +90,9 @@ export interface ITelegramBotMessageFailed {
 interface INewsRequestSent {
     type: typeof SET_NEWS_REQUEST_SENT,
 }
+interface INewsRequestOver {
+    type: typeof SET_NEWS_REQUEST_OVER,
+}
 interface INewsRequestSuccess {
     type: typeof SET_NEWS_REQUEST_SUCCESS,
 }
@@ -106,9 +101,13 @@ interface INewsRequestFailed {
 }
 interface IPushNews {
     type: typeof PUSH_NEWS,
-    payload: Array<INews>,
+    payload: {
+        lastPage: number;
+        fetchedNews: Array<INews>,
+        currentPage: number
+    },
 }
-export type INewsActions = INewsRequestSent | INewsRequestFailed | IPushNews | INewsRequestSuccess;
+export type INewsActions = INewsRequestSent | INewsRequestFailed | IPushNews | INewsRequestSuccess | INewsRequestOver;
 
 //
 

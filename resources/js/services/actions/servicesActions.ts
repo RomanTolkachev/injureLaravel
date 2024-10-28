@@ -1,4 +1,4 @@
-import {AppThunk, IServiceItem, TAppDispatch} from "../utils/types";
+import {AppThunk, IServiceItem} from "../utils/types";
 import {fetchServices} from "../utils/api";
 
 export const GET_SERVICES_SUCCESS:"GET_SERVICES_SUCCESS" = "GET_SERVICES_SUCCESS";
