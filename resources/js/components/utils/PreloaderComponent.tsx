@@ -1,5 +1,13 @@
 import {FunctionComponent} from "react";
 
-export const PreloaderComponent: FunctionComponent = () => {
-    return <div className={"preloader"}></div>
+interface IProps {
+    className?: string
+}
+
+export const PreloaderComponent: FunctionComponent<IProps> = ({className}) => {
+    return (
+        <div className={`${className}`}>
+            <div className="preloader"></div>
+        </div>
+    )
 }

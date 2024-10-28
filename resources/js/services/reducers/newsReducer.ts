@@ -2,6 +2,7 @@ import { INews } from "../utils/newsType";
 import {
     PUSH_NEWS,
     SET_NEWS_REQUEST_ERROR,
+    SET_NEWS_REQUEST_OVER,
     SET_NEWS_REQUEST_SENT,
     SET_NEWS_REQUEST_SUCCESS
 } from "../actions/newsActions";
@@ -31,6 +32,12 @@ export const newsReducer = (state: INewsReducer = initialState, action: INewsAct
             return {
                 ...state,
                 newsRequestSent: true,
+            }
+        };
+        case SET_NEWS_REQUEST_OVER: {
+            return {
+                ...state,
+                newsRequestSent: false,
             }
         };
         case SET_NEWS_REQUEST_SUCCESS: {
