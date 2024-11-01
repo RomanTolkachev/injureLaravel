@@ -60,7 +60,7 @@ export const ServiceCardsLayout: FunctionComponent<IProps> = ({
             key={key}
           >
             <Link to={`${item.id}`} state={{ background: location }}>
-              <ServiceCard serviceData={item} className={``} />
+              <ServiceCard serviceData={item} />
             </Link>
           </motion.li>
         );

@@ -13,19 +13,24 @@ import { Footer } from "./components/Footer";
 import Modal from "./components/Modal/Modal";
 import { ServiceLongRead } from "./components/Modal/serviceLongRead";
 import { ContainerIfNoBackground } from "./pages/ContainerIfNoBackground";
-import { useSelectorTyped } from "./services/hooks/typedUseSelector";
+import { NewsLongRead } from "./components/Modal/NewsLongRead";
 
 function App(): React.JSX.Element {
-    const { isMapLoaded } = useSelectorTyped((state) => state.mapState);
     const location = useLocation();
     const navigate = useNavigate();
 
     const background: string = location.state && location.state.background;
-    const isDynamicRoute = location.pathname.startsWith("/services/");
+    const isDynamicRoute = location.pathname.startsWith("/services/") || location.pathname.startsWith("/main/");
     const memoizedLocation = useMemo(() => {
+        console.log(location)
         if (isDynamicRoute && background) {
-            return { ...location, pathname: "/services" };
+            if (location.pathname.startsWith("/services/")) {
+                return { ...location, pathname: "/services" };
+            } else if (location.pathname.startsWith("/main")) {
+                return { ...location, pathname: "/" };
+            }
         }
+        console.log(location)
         return location;
     }, [background, isDynamicRoute, location]);
 
@@ -72,6 +77,14 @@ function App(): React.JSX.Element {
                                 }
                             />
                             <Route
+                                path={"main/:newsId"}
+                                element={
+                                    <ContainerIfNoBackground
+                                        children={<NewsLongRead />}
+                                    />
+                                }
+                            />
+                            <Route
                                 path="/team"
                                 element={
                                     <AnimatedPageRouting children={<Team />} />
@@ -107,6 +120,15 @@ function App(): React.JSX.Element {
                                 <Modal
                                     closeModal={closeModal}
                                     children={<ServiceLongRead />}
+                                />
+                            }
+                        />
+                        <Route
+                            path={"main/:newsId"}
+                            element={
+                                <Modal
+                                    closeModal={closeModal}
+                                    children={<NewsLongRead />}
                                 />
                             }
                         />

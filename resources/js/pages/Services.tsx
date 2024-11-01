@@ -37,7 +37,7 @@ export const Services: FunctionComponent = () => {
                         className={"sm:mb-6 lg:mb-10"}
                     />
                 </div>
-            </> : <div className={"h-[100px] py-5 w-full sm:mb-6 lg:mb-10"}><PreloaderComponent/></div>
+            </> : <PreloaderComponent className={"h-[100px] py-5 w-full sm:mb-6 lg:mb-10"}/>
         }
         <CallUs employee={team[1]}></CallUs>
     </div>

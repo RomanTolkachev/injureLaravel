@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { NewsItem } from "./NewsItem";
 import { INews } from "../../../services/utils/newsType";
 import useScrollToRef from "../../../services/hooks/useScrollToRef";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface IProps {
     newsSource: Array<INews>
@@ -18,7 +18,8 @@ export const NewsList= forwardRef<HTMLLIElement, IProps>(({newsSource}, ref) => 
     const prevNewsCountRef = useRef(newsSource.length);
     const scrollToRef = useScrollToRef()
     const controls = useAnimation();
-    const [mounted, setMounted] = useState(false)
+    const [mounted, setMounted] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         prevNewsCountRef.current = newsSource.length;
@@ -47,7 +48,7 @@ export const NewsList= forwardRef<HTMLLIElement, IProps>(({newsSource}, ref) => 
                         key={item.id}
                         ref={isFirstNewItem ? ref : null}
                     >
-                        <Link to={`${item.id}`} state={{ background: location }} onClick={() => console.log(`${item.id}`)}>
+                        <Link to={`/main/${item.id}`} state={{ background: location }}>
                             <NewsItem news={item} />
                         </Link>
                     </motion.li>
