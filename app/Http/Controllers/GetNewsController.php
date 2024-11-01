@@ -10,7 +10,7 @@ class GetNewsController extends Controller
 {
     public function __invoke(GetNewsRequest $request)
     {
-        $news = News::orderBy('created_at')->paginate(
+        $news = News::orderByDesc('created_at')->paginate(
             page: $request->page,
             perPage: $request->rows,
         );

@@ -56,6 +56,17 @@ export const Form: FunctionComponent<IProps> = ({className}) => {
         }
     }, [errors]);
 
+    useEffect(() => {
+        const handleWatchFields = () => {
+            const allFieldsEmpty = memoIds.every(({ inputName }) => !forms[inputName as keyof IInputs]);
+            if (allFieldsEmpty) {
+                clearErrors();
+            }
+        };
+        handleWatchFields();
+    }, [forms, clearErrors, memoIds]);
+
+
     const onSubmit: SubmitHandler<IInputs> = data => {
         dispatch(sendCallUsRequest(data))
             .then(() => {reset(); setValue((memoIds[2].inputName as keyof IInputs), "")} )

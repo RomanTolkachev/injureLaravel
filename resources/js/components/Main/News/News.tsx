@@ -7,20 +7,7 @@ import {
 import { requestNews } from "../../../services/actions/newsActions";
 import { PreloaderComponent } from "../../utils/PreloaderComponent";
 import { NewsList } from "./NewsList";
-import { motion } from "framer-motion";
 import { PreloaderAnimatedButton } from "../../buttons/PreloaderAnimatedButton";
-
-const buttonVariants = {
-    animate: {
-        scale: [1, 1.15, 1],
-        color: ["#000000", "#808080", "#000000"],
-        transition: {
-            repeat: Infinity,
-            duration: 1,
-            ease: "easeInOut",
-            repeatDelay: 2 }
-    }
-};
 
 
 export const News: FunctionComponent = () => {
@@ -44,7 +31,7 @@ export const News: FunctionComponent = () => {
 
     return (
         <div
-            className="sm:white-bottom-mask mx-auto max-w-[1024px] px-5 py-10 max-lg:container sm:px-0 sm:py-14 md:py-20 lg:py-32">
+            className="mx-auto max-w-[1024px] px-5 py-10 max-lg:container sm:px-0 sm:py-14 md:py-20 lg:py-32">
             <HeaderNews />
             {newsSource.length === 0 && isRequestSent
                 ? <PreloaderComponent className="h-[120px] py-8" />
@@ -57,14 +44,6 @@ export const News: FunctionComponent = () => {
                 activeText="еще новости"
                 blockedText="это все новости"
                 clickHandler={handleClick} />
-
-            {/*<div className="h-[120px] w-full flex justify-center items-center !text-[#808080] font-black">*/}
-            {/*    {currentPage < lastPage*/}
-            {/*        ? (isRequestSent*/}
-            {/*            ? <PreloaderComponent className="h-[80px]" />*/}
-            {/*            : <motion.button onClick={handleClick} animate={"animate"} variants={buttonVariants} className="px-4 py-2">еще новости</motion.button>)*/}
-            {/*        : <span className="px-4 py-2 text-my-deep-gray">это все новости</span>}*/}
-            {/*</div>*/}
         </div>
     );
 };

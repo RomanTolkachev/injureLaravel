@@ -37,7 +37,7 @@ export const Hero: FunctionComponent = () => {
 
     return (
         <div className="my-gradient relative h-[calc(100svh-79px)] min-h-[600px] w-full overflow-hidden">
-            <div className="mx-auto h-full w-full max-w-[1540px]">
+            <div className="relative mx-auto h-full w-full max-w-[1540px]">
                 <div className="relative mx-auto flex h-full w-full min-w-fit max-w-[1280px] justify-center md:justify-end md:pr-5 lg:pr-20">
                     {shouldAnimate ? (
                         <motion.img
@@ -62,14 +62,14 @@ export const Hero: FunctionComponent = () => {
                     )}
                     <div className="hero-mask absolute left-0 z-[1] h-[calc(100svh-79px)] min-h-[600px] w-full opacity-60 sm:hidden"></div>
                 </div>
-                <div className="absolute top-0 z-[2] flex h-full items-center justify-center max-sm:right-1/2 max-sm:translate-x-1/2 sm:pl-4 md:pl-6 xl:pl-20">
+                <div className="absolute top-0 z-[2] flex h-full items-center justify-center max-sm:right-1/2 max-sm:translate-x-1/2 sm:pl-4 md:pl-12 xl:pl-20">
                     <div className="flex h-full max-w-[400px] flex-col justify-center tracking-tight max-sm:pb-20 max-sm:pt-16 md:max-w-[480px] xl:max-w-[680px]">
-                        <h1 className="mb-4 px-4 text-hero-main-small-mobile font-black uppercase text-white max-sm:mt-auto sm:px-0 sm:text-hero-main">
+                        <h1 className="mb-4 px-4 text-hero-main-small-mobile font-black uppercase text-white max-sm:mt-auto sm:px-0 sm:text-4xl md:text-5xl lg:text-6xl">
                             нам
                             <br /> доверяют
                             <br /> по праву
                         </h1>
-                        <p className="mb-10 px-4 text-hero-legend text-white sm:px-0">
+                        <p className=" mb-6 sm:mb-5 px-4 text-hero-legend text-white sm:px-0">
                             Мы - юридическая компания «In Jure» ("Ин Юре"),
                             специализирующаяся на правовом сопровождении бизнеса
                             и на оказании помощи физическим лицам во всех
@@ -80,10 +80,12 @@ export const Hero: FunctionComponent = () => {
                         </div>
                     </div>
                 </div>
+                <div className={"z-9 sm:px-4 md:px-12 xl:px-20 absolute bottom-0 right-1/2 w-full max-w-screen-2xl translate-x-1/2"}>
+                    <Carousel
+                        className={" "}
+                    />
+                </div>
             </div>
-            <Carousel
-                className={"z-9 bottom-0 right-1/2 w-full translate-x-1/2"}
-            />
         </div>
     );
 };

@@ -46,9 +46,9 @@ export const Carousel: FunctionComponent<IProps> = ({
     return (
         <AnimationSettingsContext.Provider value={{ spacing, speed }}>
             <div
-                className={`${className} h-20 max-w-screen-2xl overflow-hidden py-5`}
+                className={`${className} h-20 py-5 overflow-hidden`}
             >
-                <div className={"flex h-full w-max"}>
+                <div className={"flex h-full w-max "}>
                     <motion.div
                         className={"inline-block h-full"}
                         animate={controls}

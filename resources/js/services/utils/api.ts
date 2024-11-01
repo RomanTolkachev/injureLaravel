@@ -45,7 +45,7 @@ export const sendRequest = (data: IInputs) => {
 const NEWS_PER_REQUEST: number = 4;
 
 export const getFourNews = (page: number) => {
-    return fetch(`${LOCAL_URL}/news/?page=${page}&rows=${NEWS_PER_REQUEST}`, {
+    return fetch(`${BASE_URL}/news?page=${page}&rows=${NEWS_PER_REQUEST}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

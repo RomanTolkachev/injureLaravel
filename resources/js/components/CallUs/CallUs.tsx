@@ -76,14 +76,6 @@ export const CallUs: FunctionComponent<{ employee: IEmployee }> = ({
         const showEmptyForm = (): void => {
             dispatch(sendMessageProcessOver())();
         };
-        // if (
-        //     getComputedStyle(formWideRef.current!).display !== "none" &&
-        //     isMessageSent &&
-        //     messageSentSuccess &&
-        //     formWideRef.current
-        // ) {
-        //     setTimeout(showEmptyForm, 3000);
-        // }
     }, [isMessageSent, messageSentSuccess, formWideRef.current]);
 
     return (

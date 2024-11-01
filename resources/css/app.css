@@ -114,6 +114,10 @@
         @apply rounded-full border-2 bg-my-blue-light text-white hover:my-button-hover
     }
 
+    .placeholder-select-none::placeholder {
+        user-select: none;
+    }
+
     .preloader {
         border: 4px solid #f3f3f3;
         border-top: 4px solid #3498db;

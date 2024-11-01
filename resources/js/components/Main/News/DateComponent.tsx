@@ -11,6 +11,7 @@ export const DateComponent: FunctionComponent<IDateHeaderProps> = ({ date }) => 
             year: "numeric",
             month: "long",
             day: "numeric",
+            timeZone: "UTC",
         }).replace("г.", "года")
         : "Неверный формат даты";
 

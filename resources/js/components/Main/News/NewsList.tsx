@@ -26,6 +26,7 @@ export const NewsList= forwardRef<HTMLLIElement, IProps>(({newsSource}, ref) => 
         scrollToRef(ref).then(() => controls.start("end"))
     }, [newsSource])
 
+
     return (
         <ul key={11} className="[&>li]:border-b [&>li]:border-b-my-main-blue">
             {newsSource && newsSource.map((item, i) => {
