@@ -1,4 +1,4 @@
-import {FunctionComponent, useEffect, useMemo} from "react";
+import { FunctionComponent, useCallback, useEffect, useMemo } from "react";
 import {InputCustom} from "../CallUs/InputCustom";
 import {SubmitErrorHandler, SubmitHandler, useForm} from "react-hook-form";
 import {sendCallUsRequest} from "../../services/actions/telegramBot";
@@ -56,16 +56,16 @@ export const Form: FunctionComponent<IProps> = ({className}) => {
         }
     }, [errors]);
 
-    useEffect(() => {
-        const handleWatchFields = () => {
-            const allFieldsEmpty = memoIds.every(({ inputName }) => !forms[inputName as keyof IInputs]);
-            if (allFieldsEmpty) {
-                clearErrors();
-            }
-        };
-        handleWatchFields();
-    }, [forms, clearErrors, memoIds]);
+    const handleWatchFields = useCallback(() => {
+        const allFieldsEmpty = memoIds.every(({ inputName }) => !forms[inputName as keyof IInputs]);
+        if (allFieldsEmpty && Object.keys(errors).length > 0) {
+            clearErrors();
+        }
+    }, [memoIds, forms, errors, clearErrors]);
 
+    useEffect(() => {
+        handleWatchFields();
+    }, [forms]);
 
     const onSubmit: SubmitHandler<IInputs> = data => {
         dispatch(sendCallUsRequest(data))

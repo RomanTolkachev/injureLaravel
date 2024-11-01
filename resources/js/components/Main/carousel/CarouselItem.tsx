@@ -6,10 +6,10 @@ interface IProps {
     logoPath: string;
 }
 
-export const CarouselItem: FunctionComponent<IProps> = ({ logoPath, key }) => {
+export const CarouselItem: FunctionComponent<IProps> = ({ logoPath }) => {
     const { spacing } = useContext(AnimationSettingsContext);
     return (
-        <div key={key} className="inline-block h-full w-fit" style={{ marginRight: `${spacing*4}px` }}>
+        <div className="inline-block h-full w-fit" style={{ marginRight: `${spacing*4}px` }}>
             <img className={"h-full"} src={logoPath} alt={""} />
         </div>
     );
