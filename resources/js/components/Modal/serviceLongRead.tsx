@@ -52,9 +52,7 @@ export const ServiceLongRead: FunctionComponent<IProps> = ({ className }) => {
                   dangerouslySetInnerHTML={{__html: article[0].content}}
               ></div>
           </div>
-      </article> :
-      <div className={"h-[100px] py-5 w-full sm:mb-6 lg:mb-10"}>
-          <PreloaderComponent/>
-      </div>
+      </article>
+      : <PreloaderComponent className={"h-[100px] py-5 w-full sm:mb-6 lg:mb-10"}/>
   );
 };
