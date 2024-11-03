@@ -77,6 +77,10 @@ const Modal: React.FunctionComponent<IModalProps> = ({
 
     useEffect(() => {
         const container = containerRef.current!;
+
+        if (!container || !container.children[0]) {
+            return;
+        }
         const isScrollable: boolean =
             container.clientHeight < container.children[0].clientHeight;
 

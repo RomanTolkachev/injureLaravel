@@ -6,7 +6,7 @@ import useScrollToRef from "../../../services/hooks/useScrollToRef";
 import { Link, useLocation } from "react-router-dom";
 
 interface IProps {
-    newsSource: Array<INews>
+    newsSource: Array<INews>;
 }
 
 const listVariants = {
@@ -14,46 +14,61 @@ const listVariants = {
     end: { opacity: 1 },
 };
 
-export const NewsList= forwardRef<HTMLLIElement, IProps>(({newsSource}, ref) => {
-    const prevNewsCountRef = useRef(newsSource.length);
-    const scrollToRef = useScrollToRef()
-    const controls = useAnimation();
-    const [mounted, setMounted] = useState(false);
-    const location = useLocation();
+export const NewsList = forwardRef<HTMLLIElement, IProps>(
+    ({ newsSource }, ref) => {
+        const prevNewsCountRef = useRef(newsSource.length);
+        const scrollToRef = useScrollToRef();
+        const controls = useAnimation();
+        const [mounted, setMounted] = useState(false);
+        const location = useLocation();
 
-    useEffect(() => {
-        prevNewsCountRef.current = newsSource.length;
-    }, [newsSource]);
+        useEffect(() => {
+            prevNewsCountRef.current = newsSource.length;
+        }, [newsSource]);
 
-    useEffect(() => {
-        if (mounted) {
-            scrollToRef(ref).then(() => controls.start("end"))
-        } else {
-            setMounted(true)
-        }
-    }, [newsSource, mounted])
+        useEffect(() => {
+            if (newsSource.length < 6) {
+                controls.start("end");
+                return;
+            }
+            if (mounted) {
+                scrollToRef(ref).then(() => controls.start("end"));
+            } else {
+                setMounted(true);
+            }
+        }, [newsSource, mounted]);
 
-
-    return (
-        <ul key={11} className="[&>li]:border-b [&>li]:border-b-my-main-blue">
-            {newsSource && newsSource.map((item, i) => {
-                let delay = i % 4; // рассчитывает значения делэя для новостей, которые пришли с сервера
-                const isFirstNewItem = i === newsSource.length - (newsSource.length - prevNewsCountRef.current);
-                return (
-                    <motion.li
-                        variants={listVariants}
-                        initial="start"
-                        animate={controls}
-                        transition={{ delay: delay * 0.4 }}
-                        key={item.id}
-                        ref={isFirstNewItem ? ref : null}
-                    >
-                        <Link to={`/main/${item.id}`} state={{ background: location }}>
-                            <NewsItem news={item} />
-                        </Link>
-                    </motion.li>
-                );
-            })}
-        </ul>
-    );
-});
+        return (
+            <ul
+                key={11}
+                className="[&>li]:border-b [&>li]:border-b-my-main-blue"
+            >
+                {newsSource &&
+                    newsSource.map((item, i) => {
+                        let delay = i % 4; // рассчитывает значения делэя для новостей, которые пришли с сервера
+                        const isFirstNewItem =
+                            i ===
+                            newsSource.length -
+                                (newsSource.length - prevNewsCountRef.current);
+                        return (
+                            <motion.li
+                                variants={listVariants}
+                                initial="start"
+                                animate={controls}
+                                transition={{ delay: delay * 0.4 }}
+                                key={item.id}
+                                ref={isFirstNewItem ? ref : null}
+                            >
+                                <Link
+                                    to={`/main/${item.id}`}
+                                    state={{ background: location }}
+                                >
+                                    <NewsItem news={item} />
+                                </Link>
+                            </motion.li>
+                        );
+                    })}
+            </ul>
+        );
+    },
+);

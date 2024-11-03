@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GetNewsController;
+use App\Http\Controllers\GetNewsItemController;
 use App\Http\Controllers\GetPortfolioDocumentController;
 use App\Http\Controllers\GetPortfoliosController;
 use App\Http\Controllers\GetServicesController;
@@ -21,3 +22,4 @@ Route::get("services", GetServicesController::class);
 Route::get("portfolios", GetPortfoliosController::class);
 Route::get("portfolios/document", GetPortfolioDocumentController::class);
 Route::get("news", GetNewsController::class);
+Route::get("news/news_item", GetNewsItemController::class);

@@ -17,9 +17,10 @@ import {
 } from "../actions/callUsActions";
 import {
     PUSH_NEWS,
-    SET_NEWS_REQUEST_ERROR, SET_NEWS_REQUEST_OVER,
+    SET_NEWS_REQUEST_ERROR,
+    SET_NEWS_REQUEST_OVER,
     SET_NEWS_REQUEST_SENT,
-    SET_NEWS_REQUEST_SUCCESS
+    SET_NEWS_REQUEST_SUCCESS,
 } from "../actions/newsActions";
 import { INews } from "./newsType";
 
@@ -27,7 +28,6 @@ export interface IMenuItem {
     path: string;
     text: string;
 }
-
 
 export interface IEmployee {
     role?: string;
@@ -89,29 +89,34 @@ export interface ITelegramBotMessageFailed {
 // новости
 
 interface INewsRequestSent {
-    type: typeof SET_NEWS_REQUEST_SENT,
+    type: typeof SET_NEWS_REQUEST_SENT;
 }
 interface INewsRequestOver {
-    type: typeof SET_NEWS_REQUEST_OVER,
+    type: typeof SET_NEWS_REQUEST_OVER;
 }
 interface INewsRequestSuccess {
-    type: typeof SET_NEWS_REQUEST_SUCCESS,
+    type: typeof SET_NEWS_REQUEST_SUCCESS;
 }
 interface INewsRequestFailed {
-    type: typeof SET_NEWS_REQUEST_ERROR,
+    type: typeof SET_NEWS_REQUEST_ERROR;
+    payload: { error: string };
 }
 interface IPushNews {
-    type: typeof PUSH_NEWS,
+    type: typeof PUSH_NEWS;
     payload: {
         lastPage: number;
-        fetchedNews: Array<INews>,
-        currentPage: number
-    },
+        fetchedNews: Array<INews>;
+        currentPage: number;
+    };
 }
-export type INewsActions = INewsRequestSent | INewsRequestFailed | IPushNews | INewsRequestSuccess | INewsRequestOver;
+export type INewsActions =
+    | INewsRequestSent
+    | INewsRequestFailed
+    | IPushNews
+    | INewsRequestSuccess
+    | INewsRequestOver;
 
 //
-
 
 export type TCallUsModal = ISetCallUsModalOpen | ISetCallUsModalClosed;
 

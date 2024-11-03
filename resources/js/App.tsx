@@ -19,10 +19,13 @@ function App(): React.JSX.Element {
     const location = useLocation();
     const navigate = useNavigate();
 
+    console.log(new Date("2024-10-27T18:15:38.000000Z").getTime());
+
     const background: string = location.state && location.state.background;
-    const isDynamicRoute = location.pathname.startsWith("/services/") || location.pathname.startsWith("/main/");
+    const isDynamicRoute =
+        location.pathname.startsWith("/services/") ||
+        location.pathname.startsWith("/main/");
     const memoizedLocation = useMemo(() => {
-        console.log(location)
         if (isDynamicRoute && background) {
             if (location.pathname.startsWith("/services/")) {
                 return { ...location, pathname: "/services" };
@@ -30,7 +33,6 @@ function App(): React.JSX.Element {
                 return { ...location, pathname: "/" };
             }
         }
-        console.log(location)
         return location;
     }, [background, isDynamicRoute, location]);
 
