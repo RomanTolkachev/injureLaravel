@@ -11,7 +11,6 @@ class GetPortfolioDocumentController extends Controller
     public function __invoke(GetPortfolioDocumentRequest $request)
     {
         $portfolio = Portfolio::findOrFail($request->portfolioId);
-//        dd($portfolio);
         return Storage::download($portfolio->document_path);
     }
 }

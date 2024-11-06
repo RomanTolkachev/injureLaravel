@@ -35,8 +35,8 @@ export const SectionAddressMapArchangelsk: FunctionComponent<Iprops> = ({
                     city={"Архангельск"}
                     firstContact={
                         <SmallHeaderAndInfoBrick
-                            email={"заполнить имейл для Архангельска"}
-                            telephone={"заполнить телефон для архангельска"}
+                            email={"advokat_fomin@mail.ru"}
+                            telephone={"89212960348"}
                         />
                     }
                 />

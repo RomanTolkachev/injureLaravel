@@ -5,6 +5,7 @@ use App\Http\Controllers\GetNewsItemController;
 use App\Http\Controllers\GetPortfolioDocumentController;
 use App\Http\Controllers\GetPortfoliosController;
 use App\Http\Controllers\GetServicesController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,4 @@ Route::get("portfolios", GetPortfoliosController::class);
 Route::get("portfolios/document", GetPortfolioDocumentController::class);
 Route::get("news", GetNewsController::class);
 Route::get("news/news_item", GetNewsItemController::class);
+Route::get("news/test", TestController::class);
